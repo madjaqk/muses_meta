@@ -22,15 +22,15 @@
 				$("form").submit(function(e){
 					e.preventDefault()
 
+					var puzz_name = $("#puzzle_name").val()
 					var pos_answer = $("#possible_answer").val().toUpperCase().replace(/[^A-Z]/g, "")
 					var hashed = hex_md5(pos_answer)
 
-					var output = `Your answer (${pos_answer}) is <strong>${hashed == answer_hashes[$("#puzzle_name").val()] ? "CORRECT" : "INCORRECT"}</strong>`
+					var output = `Your answer (${pos_answer}) is <strong>${hashed == answer_hashes[puzz_name] ? "CORRECT" : "INCORRECT"}</strong>`
 					$("#check_result").html(output)
 
 					$("#possible_answer").val("")
 				})
-
 			
 			})
 		</script>
