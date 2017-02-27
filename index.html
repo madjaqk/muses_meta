@@ -32,6 +32,19 @@
 					"The Muses": "609d07cbd10556cf55baf3d6c9fc573d"
 				}
 
+				var valid_answers = {
+					"Terpsichore": "a1b54b3da80502c6c1b30c0c3d3e455f",
+					"Polyhymnia": "1403da161b682466f9ce1d360bcc592d",
+					"Thalia": "904f49a40eb6f87b61c2b3449528a682",
+					"Melpomene": "567f46cb4ef4ef6a337785c90b28c19d",
+					"Urania": "5fd197b8a770cc0714dc963a02ee2ba6",
+					"Euterpe": "5d1d999a2690c80781b05766247609fa",
+					"Clio": "958909e26fa4a8d032fcc931a8e421bb",
+					"Erato": "b6976b9de4f4fd227fd23b970486014f",
+					"Calliope": "37e76050412466e74425a24c6714d657",
+					"The Muses": "2308bc498d5fcbec8b23362d4f5ff55c"
+				}
+
 				$("form").submit(function(e){
 					e.preventDefault()
 
@@ -39,7 +52,7 @@
 					var pos_answer = $("#possible_answer").val().toUpperCase().replace(/[^A-Z]/g, "")
 					var hashed = hex_md5(pos_answer)
 
-					var output = `Your answer (${pos_answer}) is <strong>${hashed == answer_hashes[puzz_name] ? "CORRECT" : "INCORRECT"}</strong> ${hashed == clue_hashes[puzz_name] ? " <p>(This is a clue to the final answer.)</p>" : ""}`
+					var output = `Your answer (${pos_answer}) is <strong>${hashed == answer_hashes[puzz_name] ? "CORRECT" : "INCORRECT"}</strong> ${hashed == clue_hashes[puzz_name] ? " <p>(This is a clue to the final answer.)</p>" : ""} ${hashed == valid_answers[puzz_name] ? " <p>(You're not wrong, really, but there's a more thematic answer.)</p>" : ""}`
 					$("#check_result").html(output)
 
 					$("#possible_answer").val("")
